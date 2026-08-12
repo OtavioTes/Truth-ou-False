@@ -13,3 +13,17 @@ body {
     color: white;
     font-size: 18px;
 }
+.espaco {
+    margin-bottom: 20px;
+}
+.verde {
+    font-family: Georgia, serif;
+    color: green;
+    font-weight: bold;
+}
+
+.vermelho{
+    font-family: "Courier New", monospace;
+    color: red;
+    font-weight: bold;
+}
