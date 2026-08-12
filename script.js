@@ -42,3 +42,31 @@ function mudarIdioma(idioma) {
             "teste-en1.html";
     }
 }
+function responder(resposta) {
+
+    const correta = document.body.dataset.resposta;
+    const resultado = document.getElementById("resultado");
+
+    const ingles = document.documentElement.lang === "en";
+
+    if (resposta === correta) {
+
+        if (ingles) {
+            resultado.textContent = "✅ Correct! You got it right.";
+        } else {
+            resultado.textContent = "✅ Correto! fez o minimo.";
+        }
+
+        resultado.style.color = "green";
+
+    } else {
+
+        if (ingles) {
+            resultado.textContent = "❌ Incorrect! Try to pay more attention.";
+        } else {
+            resultado.textContent = "❌ Incorreto! mds minha vó acerto pensando que era bingo meu";
+        }
+
+        resultado.style.color = "red";
+    }
+}
