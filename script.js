@@ -1,20 +1,30 @@
 function mudarIdioma(idioma) {
 
     if (idioma === "pt") {
-        document.getElementById("titulo").textContent = "Truth ou False";
-        document.getElementById("introducao").textContent =
-            "Olá investigador! Seu trabalho é decidir se as notícias são verdadeiras ou falsas.";
+        document.getElementById("titulo").textContent =
+            "Teste de intensificador de fake news";
 
-        document.getElementById("verdadeiro").textContent = "VERDADEIRO";
-        document.getElementById("falso").textContent = "FALSO";
+        document.getElementById("introducao").innerHTML =
+            'Olá investigador(a), seu trabalho de hoje é ler notícias e decidir se elas são <i class="verde">VERDADEIRAS</i> ou <i class="vermelho">FALSAS</i>.';
+
+        document.getElementById("verdadeiro").textContent =
+            "VERDADEIRO";
+
+        document.getElementById("falso").textContent =
+            "FALSO";
     }
 
     if (idioma === "en") {
-        document.getElementById("titulo").textContent = "Truth or False";
-        document.getElementById("introducao").textContent =
-            "Hello investigator! Your job is to decide whether the news is true or false.";
+        document.getElementById("titulo").textContent =
+            "Fake News Detection Test";
 
-        document.getElementById("verdadeiro").textContent = "TRUE";
-        document.getElementById("falso").textContent = "FALSE";
+        document.getElementById("introducao").innerHTML =
+            'Hello investigator! Your job is to read the news and decide whether they are <i class="verde">TRUE</i> or <i class="vermelho">FALSE</i>.';
+
+        document.getElementById("verdadeiro").textContent =
+            "TRUE";
+
+        document.getElementById("falso").textContent =
+            "FALSE";
     }
 }
