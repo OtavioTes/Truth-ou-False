@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <title>Resultado - Truth ou False</title>
+</head>
+
+<body>
+
+    <main class="resultado-final">
+
+        <h1>🏆 RESULTADO FINAL</h1>
+
+        <p id="portugues"></p>
+
+        <p id="ingles"></p>
+
+        <h2 id="total"></h2>
+
+        <h2 id="mensagem"></h2>
+
+        <p id="descricao"></p>
+
+        <a href="index.html" onclick="resetarJogo()">
+            VOLTAR AO INÍCIO
+        </a>
+
+    </main>
+
+    <script>
+
+        const pontosPT = Number(localStorage.getItem("pontosPT")) || 0;
+    const pontosEN = Number(localStorage.getItem("pontosEN")) || 0;
+
+    const total = pontosPT + pontosEN;
+
+    document.getElementById("portugues").textContent =
+        "🇧🇷 Português: " + pontosPT + " / 5";
+
+    document.getElementById("ingles").textContent =
+        "🇺🇸 English: " + pontosEN + " / 5";
+
+    document.getElementById("total").textContent =
+        "🏆 Total: " + total + " / 10";
+
+
+        const mensagem =
+            document.getElementById("mensagem");
+
+        const descricao =
+            document.getElementById("descricao");
+
+
+        if (total === 10) {
+
+            mensagem.textContent = "🔥 PERFEITO!";
+
+            descricao.textContent =
+                "Você acertou todas as notícias!";
+
+        }
+
+        else if (total >= 8) {
+
+            mensagem.textContent = "👏 EXCELENTE!";
+
+            descricao.textContent =
+                "Você é muito bom em identificar possíveis fake news!";
+
+        }
+
+        else if (total >= 6) {
+
+            mensagem.textContent = "👍 BOM TRABALHO!";
+
+            descricao.textContent =
+                "Você foi bem, mas ainda pode prestar mais atenção aos detalhes.";
+
+        }
+
+        else if (total >= 4) {
+
+            mensagem.textContent = "🤔 QUASE LÁ!";
+
+            descricao.textContent =
+                "Algumas notícias conseguiram enganar você.";
+
+        }
+
+        else {
+
+            mensagem.textContent = "🧐 PRECISA TREINAR!";
+
+            descricao.textContent =
+                "Tente analisar melhor as informações antes de responder.";
+        }
+
+
+        function resetarJogo() {
+
+            localStorage.removeItem("pontosPT");
+            localStorage.removeItem("pontosEN");
+
+            sessionStorage.clear();
+        }
+
+    </script>
+
+</body>
+
+</html>
