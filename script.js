@@ -43,58 +43,57 @@ function mudarIdioma(idioma) {
     }
 }
 function responder(resposta) {
-    const correta = document.body.dataset.resposta;
-    const idioma = document.documentElement.lang;
-    const resultado = document.getElementById("resultado");
-
-    function responder(resposta) {
 
     const correta = document.body.dataset.resposta;
     const idioma = document.documentElement.lang;
     const resultado = document.getElementById("resultado");
 
-    // Cria uma identificação única para cada página
+    // Evita responder duas vezes na mesma página
     const pagina = window.location.pathname;
-    const respondido = "respondido_" + pagina;
+    const chave = "respondido_" + pagina;
 
-    // Impede responder duas vezes na MESMA questão
-    if (sessionStorage.getItem(respondido) === "true") {
+    if (sessionStorage.getItem(chave)) {
         return;
     }
 
-    sessionStorage.setItem(respondido, "true");
+    sessionStorage.setItem(chave, "true");
 
-    if (resposta === correta) {
+    if (resposta.toLowerCase() === correta.toLowerCase()) {
 
-        if (idioma === "en") {
-            resultado.textContent = "✅ Correct! You got it right.";
-        } else {
-            resultado.textContent = "✅ Farmo cara!!!.";
-        }
+        resultado.textContent =
+            idioma === "en"
+                ? "✅ Correct! You got it right."
+                : "✅ Correto! Você acertou.";
 
-        resultado.style.color = "green";
+        resultado.className = "verde";
 
+        // Pontuação em português
         if (idioma === "pt-br") {
+
             let pontosPT = Number(localStorage.getItem("pontosPT")) || 0;
+
             pontosPT++;
+
             localStorage.setItem("pontosPT", pontosPT);
         }
 
+        // Pontuação em inglês
         if (idioma === "en") {
+
             let pontosEN = Number(localStorage.getItem("pontosEN")) || 0;
+
             pontosEN++;
+
             localStorage.setItem("pontosEN", pontosEN);
         }
 
     } else {
 
-        if (idioma === "en") {
-            resultado.textContent = "❌ Incorrect!";
-        } else {
-            resultado.textContent = "❌ Muito ruim ta precisando estudar em!";
-        }
+        resultado.textContent =
+            idioma === "en"
+                ? "❌ Incorrect!"
+                : "❌ Incorreto!";
 
-        resultado.style.color = "red";
+        resultado.className = "vermelho";
     }
-}
 }
